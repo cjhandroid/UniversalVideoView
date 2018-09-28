@@ -10,13 +10,12 @@
         android:layout_height="200dp"
         android:background="@android:color/black">
 
-        <com.universalvideoview.UniversalVideoView
-            android:id="@+id/videoView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+        <com.universalvideoview.UniversalExoPlayer
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            app:uvv_autoRotation="true"
-            app:uvv_fitXY="false" />
+            android:id="@+id/videoView"
+            android:visibility="visible" />
 
         <com.universalvideoview.UniversalMediaController
             android:id="@+id/media_controller"

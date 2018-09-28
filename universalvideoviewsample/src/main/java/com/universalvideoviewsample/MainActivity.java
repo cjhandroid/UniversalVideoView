@@ -25,16 +25,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.universalvideoview.UniversalExoPlayer;
 import com.universalvideoview.UniversalMediaController;
 import com.universalvideoview.UniversalVideoView;
 
-public class MainActivity extends AppCompatActivity implements UniversalVideoView.VideoViewCallback{
+public class MainActivity extends AppCompatActivity implements UniversalExoPlayer.VideoViewCallback{
 
     private static final String TAG = "MainActivity";
     private static final String SEEK_POSITION_KEY = "SEEK_POSITION_KEY";
-    private static final String VIDEO_URL = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    private static final String VIDEO_URL = "http://imagetest.youshikoudai.com/620e89df-7d68-4696-a68d-3e07bd223c8e";
 
-    UniversalVideoView mVideoView;
+    UniversalExoPlayer mVideoView;
     UniversalMediaController mMediaController;
 
     View mBottomLayout;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements UniversalVideoVie
 
         mVideoLayout = findViewById(R.id.video_layout);
         mBottomLayout = findViewById(R.id.bottom_layout);
-        mVideoView = (UniversalVideoView) findViewById(R.id.videoView);
+        mVideoView = (UniversalExoPlayer) findViewById(R.id.videoView);
         mMediaController = (UniversalMediaController) findViewById(R.id.media_controller);
         mVideoView.setMediaController(mMediaController);
         setVideoAreaSize();
@@ -67,13 +68,6 @@ public class MainActivity extends AppCompatActivity implements UniversalVideoVie
                 }
                 mVideoView.start();
                 mMediaController.setTitle("Big Buck Bunny");
-            }
-        });
-
-        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                Log.d(TAG, "onCompletion ");
             }
         });
 
@@ -146,6 +140,11 @@ public class MainActivity extends AppCompatActivity implements UniversalVideoVie
         }
 
         switchTitleBar(!isFullscreen);
+    }
+
+    @Override
+    public void onMinimized() {
+
     }
 
     private void switchTitleBar(boolean show) {
